@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1090365330239",
+    "firebase_url": "https://smartguard-2352a-default-rtdb.firebaseio.com",
+    "project_id": "smartguard-2352a",
+    "storage_bucket": "smartguard-2352a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090365330239:android:15525b8f675245fe76f98a",
+        "android_client_info": {
+          "package_name": "com.cocomelon.smartguard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090365330239-l5j2kqqrm5mr8n6ctleqaavnb1lb22o8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cocomelon.smartguard",
+            "certificate_hash": "d1e479e9cb3ca02702a0ce34c608ea6137741467"
+          }
+        },
+        {
+          "client_id": "1090365330239-a1i4l0rmoq21f98v62v2p7fmpoo1226t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChSF3nR2NouU4-HDOFceLRkfhVLvfMR6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090365330239-a1i4l0rmoq21f98v62v2p7fmpoo1226t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

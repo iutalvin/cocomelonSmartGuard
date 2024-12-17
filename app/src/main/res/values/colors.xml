@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green">#4CAF50</color>
+    <color name="colorLight">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="leafy_green_light">#A8E6A1</color>
+
+    <!-- Google red color for tint -->
+    <color name="googleRed">#DB4437</color>
+
+    <!-- Background color -->
+    <color name="backgroundLight">#E8F5E9</color>
+        <color name="purple_background">#800080</color>
+
+</resources>

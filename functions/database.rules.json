@@ -1,0 +1,22 @@
+{
+  "rules": {
+    // Ensure that only authenticated users can read/write to the database
+    ".read": "auth != null",
+    ".write": "auth != null",
+
+    "users": {
+      "$uid": {
+        // Only the user with matching UID can access their data
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+
+        "alerts": {
+          "$timestamp": {
+            // Validation for each alert node to ensure the correct structure
+            ".validate": "newData.hasChildren(['alertType', 'sensorValue', 'timestamp']) && newData.child('alertType').val() !== null && newData.child('sensorValue').val() !== null && newData.child('timestamp').val() !== null"
+          }
+        }
+      }
+    }
+  }
+}

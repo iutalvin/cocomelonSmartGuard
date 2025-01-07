@@ -1,5 +1,6 @@
 package com.cocomelon.smartguard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -44,6 +46,7 @@ public class SignupActivity extends AppCompatActivity {
         String password = edtPassword.getText().toString().trim();
         String confirmPassword = edtConfirmPassword.getText().toString().trim();
 
+        // Validate the input fields
         if (username.isEmpty()) {
             edtUsername.setError("Username is required");
             edtUsername.requestFocus();
@@ -72,23 +75,40 @@ public class SignupActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Save username to email mapping in Realtime Database
-                        saveUsernameMapping(username, email);
+                        // After successful sign up, now save the username mapping to the Realtime Database
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            // Save user information to Realtime Database
+                            saveUserDataToDatabase(user, username);
+                        }
                     } else {
                         Toast.makeText(SignupActivity.this, "Signup Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void saveUsernameMapping(String username, String email) {
-        usersRef.child(username).setValue(email)
+    private void saveUserDataToDatabase(FirebaseUser user, String username) {
+        // Create a user object with username and email
+        UserProfile newUser = new UserProfile(username, user.getEmail());
+
+        // Save user data to Firebase Realtime Database
+        usersRef.child(user.getUid()).setValue(newUser)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        // Show success message and navigate to Login screen
                         Toast.makeText(SignupActivity.this, "Signup Successful", Toast.LENGTH_SHORT).show();
-                        finish(); // Close this activity after successful signup
+                        navigateToLogin();
                     } else {
-                        Toast.makeText(SignupActivity.this, "Failed to save username mapping: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        // Handle failure to save data
+                        Toast.makeText(SignupActivity.this, "Failed to save user data: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void navigateToLogin() {
+        // After a successful signup, navigate to the Login screen
+        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();  // Close SignupActivity
     }
 }

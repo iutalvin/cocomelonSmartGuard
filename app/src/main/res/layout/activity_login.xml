@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:gravity="center">
 
-
+    <!-- Email Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:backgroundTint="@color/leafy_green_light"
         android:textColor="?attr/android:textColorPrimary"
         android:padding="12dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" />
 
     <!-- Google Login -->
     <Button
@@ -52,7 +52,7 @@
         android:backgroundTint="@color/purple_background"
         android:textColor="@android:color/white"
         android:padding="12dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" />
 
     <!-- Navigate to Signup -->
     <Button
@@ -62,6 +62,5 @@
         android:text="Sign Up"
         android:backgroundTint="@android:color/background_light"
         android:textColor="?attr/android:textColorPrimary"
-        android:padding="12dp"/>
-
+        android:padding="12dp" />
 </LinearLayout>

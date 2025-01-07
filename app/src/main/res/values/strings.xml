@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">SmartGuard</string>
     <string name="default_web_client_id">1090365330239-a1i4l0rmoq21f98v62v2p7fmpoo1226t.apps.googleusercontent.com</string>
-
+    <string name="msg_token_fmt">FCM Registration Token: %1$s</string>
+    <string name="drawer_layout">Drawer Layout</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
 </resources>

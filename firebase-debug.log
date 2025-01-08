@@ -1,0 +1,68 @@
+[debug] [2025-01-08T05:41:22.959Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T05:41:22.964Z] Command:       /usr/bin/node /usr/local/bin/firebase init functions
+[debug] [2025-01-08T05:41:22.966Z] CLI Version:   13.29.1
+[debug] [2025-01-08T05:41:22.966Z] Platform:      linux
+[debug] [2025-01-08T05:41:22.967Z] Node Version:  v18.19.1
+[debug] [2025-01-08T05:41:22.967Z] Time:          Wed Jan 08 2025 13:41:22 GMT+0800 (Philippine Standard Time)
+[debug] [2025-01-08T05:41:22.968Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T05:41:23.029Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T05:41:23.031Z] > authorizing via signed-in user (guillenoalvin25@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/alvin/AndroidStudioProjects/SmartGuard
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-01-08T05:41:23.042Z] Using project from CLI flag: smartguard-2352a
+[debug] [2025-01-08T05:41:23.046Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:23.047Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:23.052Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/smartguard-2352a [none]
+[debug] [2025-01-08T05:41:24.904Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/smartguard-2352a 200
+[debug] [2025-01-08T05:41:24.904Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/smartguard-2352a {"projectId":"smartguard-2352a","projectNumber":"1090365330239","displayName":"SmartGuard ","name":"projects/smartguard-2352a","resources":{"hostingSite":"smartguard-2352a","realtimeDatabaseInstance":"smartguard-2352a-default-rtdb"},"state":"ACTIVE","etag":"1_e78bb3a2-008e-483d-9343-f1adc14b1d23"}
+[info] i  Using project smartguard-2352a (SmartGuard ) 
+[info] 
+=== Functions Setup
+[debug] [2025-01-08T05:41:24.966Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T05:41:24.967Z] > authorizing via signed-in user (guillenoalvin25@gmail.com)
+[debug] [2025-01-08T05:41:24.967Z] [iam] checking project smartguard-2352a for permissions ["firebase.projects.get"]
+[debug] [2025-01-08T05:41:24.968Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:24.968Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:24.968Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/smartguard-2352a:testIamPermissions [none]
+[debug] [2025-01-08T05:41:24.969Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/smartguard-2352a:testIamPermissions x-goog-quota-user=projects/smartguard-2352a
+[debug] [2025-01-08T05:41:24.969Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/smartguard-2352a:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T05:41:25.899Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/smartguard-2352a:testIamPermissions 200
+[debug] [2025-01-08T05:41:25.899Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/smartguard-2352a:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T05:41:25.901Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:25.902Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:25.902Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:25.902Z] Checked if tokens are valid: true, expires at: 1736318410208
+[debug] [2025-01-08T05:41:25.902Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-01-08T05:41:25.902Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/smartguard-2352a
+[debug] [2025-01-08T05:41:25.906Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-01-08T05:41:25.906Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/smartguard-2352a
+[debug] [2025-01-08T05:41:27.237Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/runtimeconfig.googleapis.com 200
+[debug] [2025-01-08T05:41:27.238Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-01-08T05:41:27.241Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/cloudfunctions.googleapis.com 200
+[debug] [2025-01-08T05:41:27.242Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/smartguard-2352a/services/cloudfunctions.googleapis.com [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+

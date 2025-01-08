@@ -103,11 +103,32 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         super.onNewToken(token);
         Log.d(TAG, "New FCM Token: " + token);
 
-        // Send the updated token to your server
+        // Send the updated token to the server
         sendTokenToServer(token);
 
-        // Subscribe to the topic based on the user's UID
-        subscribeToUserTopic(token);
+        // Subscribe to a general topic
+        FirebaseMessaging.getInstance().subscribeToTopic("smartguard-alerts")
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "Successfully subscribed to general topic: smartguard-alerts");
+                    } else {
+                        Log.e(TAG, "Failed to subscribe to general topic", task.getException());
+                    }
+                });
+
+        // Subscribe to user-specific topic
+        String userId = FirebaseAuth.getInstance().getCurrentUser() != null
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
+                : "guest";
+
+        FirebaseMessaging.getInstance().subscribeToTopic(userId)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "Successfully subscribed to topic: " + userId);
+                    } else {
+                        Log.e(TAG, "Failed to subscribe to topic: " + userId, task.getException());
+                    }
+                });
     }
 
     // Subscribe to the topic based on the user's UID

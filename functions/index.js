@@ -1,31 +1,41 @@
-exports.sendSensorNotification = functions.database
-  .ref('/users/{uid}/alerts/{timestamp}')
-  .onCreate(async (snapshot, context) => {
-    console.log('Context params:', context.params);  // Log context.params to verify
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
-    const alertData = snapshot.val();
-    const uid = context.params.uid;
-    const timestamp = context.params.timestamp;
+admin.initializeApp();
 
-    if (!alertData) {
-      console.log('No alert data found');
+exports.sendNotificationAtScheduledTime = functions.pubsub.schedule('every 1 minutes')  // Test every minute
+  .onRun(async (context) => {
+    console.log('Triggered the scheduled function...');
+
+    // Get user data (this assumes you have user data with alerts)
+    const snapshot = await admin.database().ref('/users').once('value');
+    const users = snapshot.val();
+
+    if (!users) {
+      console.log('No users found in the database.');
       return null;
     }
 
-    const message = {
-      notification: {
-        title: 'Sensor Alert',
-        body: `New alert at ${timestamp}: ${alertData.alertType} - ${alertData.sensorValue}`,
-      },
-      topic: uid,
-    };
+    // Loop through each user in the database
+    for (const userId in users) {
+      if (users.hasOwnProperty(userId)) {
+        const user = users[userId];
+        const alerts = user.alerts;
 
-    try {
-      const response = await admin.messaging().send(message);
-      console.log('Notification sent successfully:', response);
-      return null;
-    } catch (error) {
-      console.error('Error sending notification:', error);
-      return null;
-    }
-  });
+        // Check if there are any alerts to notify about
+        if (alerts) {
+          // Loop through each alert for the user
+          for (const alertId in alerts) {
+            const alert = alerts[alertId];
+
+            // Prepare notification message
+            const message = {
+              notification: {
+                title: 'Sensor Alert Triggered',
+                body: `Sensor Alert: ${alert.alertType} - Value: ${alert.sensorValue}`,
+              },
+              data: {
+                alertType: alert.alertType || 'unknown',
+                sensorValue: alert.sensorValue.toString() || '0',
+              },
+              topic: `

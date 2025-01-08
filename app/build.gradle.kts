@@ -62,10 +62,11 @@ dependencies {
     // Firebase Core and Auth
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
-    implementation("com.google.firebase:firebase-messaging") // Correctly specified FCM
+    implementation("com.google.firebase:firebase-messaging")
+    implementation ("com.google.android.material:material")// Correctly specified FCM
 
     // Firebase Analytics (Optional, but useful)
-    implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.google.firebase:firebase-analytics")
 
     // Google Sign-In dependency
     implementation("com.google.android.gms:play-services-auth:20.7.0")
